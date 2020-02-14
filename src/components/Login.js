@@ -12,9 +12,6 @@ export class Login extends Component {
     constructor(props) {
         super(props);
 
-        this.onChangeUsername = this.onChangeUsername.bind(this);
-        this.onChangePassword = this.onChangePassword.bind(this);
-
         this.state = {
             formUsername: "",
             formPassword: ""
@@ -22,6 +19,7 @@ export class Login extends Component {
     }
 
     onChangeUsername = (e) => { this.setState({ formUsername: e.target.value }) }
+
     onChangePassword = (e) => { this.setState({ formPassword: e.target.value }) }
 
     onSubmit = (e) => {
