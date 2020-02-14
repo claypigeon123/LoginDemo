@@ -27,14 +27,18 @@ export class Login extends Component {
 
         // Axios call to backend here; use response (however you set it up) instead of validUser
 
-        // ˇ --- Wrap this in the Axios callback(s) --- ˇ
-        if (this.state.formUsername === validUser.username && this.state.formPassword === validUser.password) {
-            this.props.login(validUser);
-        } else {
-            window.alert("Invalid Username or Password");
-        }
-        this.setState({formUsername: "", formPassword: ""});
-        // ^ --- Wrap this in the Axios callback(s) --- ^
+        // ˇ --- Wrap this in the Axios callback(s), and modify according to your API --- ˇ //
+        //                                                                                  //
+            if (this.state.formUsername === validUser.username && this.state.formPassword === validUser.password) {
+                // Valid combination, log in user
+                this.props.login(validUser);
+            } else {
+                // Deal with invalid username & password
+                window.alert("Invalid Username or Password");
+            }
+            this.setState({formUsername: "", formPassword: ""});
+        //                                                                                  //
+        // ^ --- Wrap this in the Axios callback(s), and modify according to your API --- ^ //
     }
 
     render() {
