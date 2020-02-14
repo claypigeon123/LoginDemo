@@ -40,25 +40,29 @@ export class Login extends Component {
     render() {
         if (this.props.activeUser._id === null) {
             return (
-                <div className="container my-5">
+                <div className="container my-5 border border-primary rounded p-3 bg-light">
                     <Form onSubmit={this.onSubmit}>
                         <Form.Group>
-                            <Form.Label>Username</Form.Label>
+                            <Form.Label className="h4 text-primary">Username</Form.Label>
                             <Form.Control required type="input" placeholder="Enter Username" value={this.state.formUsername} onChange={this.onChangeUsername} />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Password</Form.Label>
+                            <Form.Label className="h4 text-primary">Password</Form.Label>
                             <Form.Control required type="password" placeholder="Enter Password" value={this.state.formPassword} onChange={this.onChangePassword} />
                         </Form.Group>
                         <Form.Group>
                             <Button type="submit" variant="outline-primary">Login</Button>
+                        </Form.Group>
+                        <Form.Group>
+                            <p className="small m-0">Username is "user"</p>
+                            <p className="small m-0">Password is "password"</p>
                         </Form.Group>
                     </Form>
                 </div>
             );
         } else {
             return (
-                <div className="container my-5">
+                <div className="container my-5 border border-primary rounded p-3 bg-light">
                     <h4 className="text-primary">Logged in</h4>
                     <h6>ID: {this.props.activeUser._id}</h6>
                     <h6>Username: {this.props.activeUser.username}</h6>

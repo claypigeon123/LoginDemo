@@ -6,7 +6,7 @@ export class LockedContent extends Component {
         if (this.props.activeUser._id !== null) {
             return (
                 <React.Fragment>
-                    <h5 className="text-danger font-weight-bold">This is content only visible when logged in.</h5>
+                    <h5 className="text-danger font-weight-bold mt-4">This is content only visible when logged in.</h5>
                 </React.Fragment>
             );
         } else {
