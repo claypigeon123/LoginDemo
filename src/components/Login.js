@@ -3,8 +3,8 @@ import { Form, Button } from 'react-bootstrap';
 
 const validUser = {
     _id: "123456",
-    username: "aliki",
-    password: "pizza"
+    username: "user",
+    password: "password"
 }
 
 export class Login extends Component {
@@ -25,19 +25,22 @@ export class Login extends Component {
     onSubmit = (e) => {
         e.preventDefault();
 
+        // Axios call to backend here; use response (however you set it up) instead of validUser
+
+        // ˇ --- Wrap this in the Axios callback(s) --- ˇ
         if (this.state.formUsername === validUser.username && this.state.formPassword === validUser.password) {
             this.props.login(validUser);
         } else {
-            window.alert("Fuck off");
+            window.alert("Invalid Username or Password");
         }
-
         this.setState({formUsername: "", formPassword: ""});
+        // ^ --- Wrap this in the Axios callback(s) --- ^
     }
 
     render() {
         if (this.props.activeUser._id === null) {
             return (
-                <div className="container">
+                <div className="container my-5">
                     <Form onSubmit={this.onSubmit}>
                         <Form.Group>
                             <Form.Label>Username</Form.Label>
@@ -48,16 +51,18 @@ export class Login extends Component {
                             <Form.Control required type="password" placeholder="Enter Password" value={this.state.formPassword} onChange={this.onChangePassword} />
                         </Form.Group>
                         <Form.Group>
-                            <Button type="submit" variant="outline-danger">Login</Button>
+                            <Button type="submit" variant="outline-primary">Login</Button>
                         </Form.Group>
                     </Form>
                 </div>
             );
         } else {
             return (
-                <div className="container">
-                    <p>Logged in as {this.props.activeUser.username}</p>
-                    <Button variant="outline-danger" onClick={this.props.logout}>Click to logout</Button>
+                <div className="container my-5">
+                    <h4 className="text-primary">Logged in</h4>
+                    <h6>ID: {this.props.activeUser._id}</h6>
+                    <h6>Username: {this.props.activeUser.username}</h6>
+                    <Button variant="outline-danger" onClick={this.props.logout}>Logout</Button>
                 </div>
             );
         }
